@@ -1,0 +1,20 @@
+{
+    
+	"sumittedSmellType" : "test",
+	
+	"recognizedSmellType" : "notRecognized",
+	
+	"location" : {
+        "city" : "Sandy Spring"
+   
+	    },
+	
+	"submitter" : "annie",
+	
+	"tempertureInF" : 88,
+	
+	"humidity" : 100,
+	
+	"matchedProbability" : 0
+	
+}	
