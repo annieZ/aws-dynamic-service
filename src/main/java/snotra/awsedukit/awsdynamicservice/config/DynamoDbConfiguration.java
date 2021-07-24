@@ -1,5 +1,6 @@
 package snotra.awsedukit.awsdynamicservice.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -15,6 +16,20 @@ import lombok.Data;
 @Configuration
 @Data
 public class DynamoDbConfiguration {
+	
+	
+	@Value("${amazon.dynamodb.endpoint}")
+	private String amazonDynamoDBEndpoint;
+
+	@Value("${amazon.aws.accesskey}")
+	private String amazonAWSAccessKey;
+
+	@Value("${amazon.aws.secretkey}")
+	private String amazonAWSSecretKey;
+	
+	@Value("${amazon.aws.region}")
+	private String amazonAWSRegion;
+
 
 	
 	private AmazonDynamoDB amazonDynamoDB;
@@ -28,13 +43,13 @@ public class DynamoDbConfiguration {
 				.standard()
 				.withEndpointConfiguration(
 						new AwsClientBuilder.EndpointConfiguration(
-								"dynamodb.us-east-1.amazonaws.com", 
-								"us-east-1"))
+								amazonDynamoDBEndpoint, 
+								amazonAWSRegion))
 				.withCredentials(
 						new AWSStaticCredentialsProvider (
 							new BasicAWSCredentials(
-									"AKIAXDKMFQ32XQ5DHMHR", 
-									"ZJ+Um0B2zeyshST/uRiEmuepRo0u42EWaI/LReth"
+									amazonAWSAccessKey, 
+									amazonAWSSecretKey
 									)
 							)
 					)
