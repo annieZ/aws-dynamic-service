@@ -10,16 +10,21 @@ import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 
+import lombok.Data;
+
 @Configuration
+@Data
 public class DynamoDbConfiguration {
 
+	
+	private AmazonDynamoDB amazonDynamoDB;
 	@Bean
 	public DynamoDBMapper dynamoDBMapper() {
 		return new DynamoDBMapper(buildAmazonDynameDB());
 	}
 
 	private AmazonDynamoDB buildAmazonDynameDB() {
-		return AmazonDynamoDBClientBuilder
+		amazonDynamoDB = AmazonDynamoDBClientBuilder
 				.standard()
 				.withEndpointConfiguration(
 						new AwsClientBuilder.EndpointConfiguration(
@@ -34,5 +39,6 @@ public class DynamoDbConfiguration {
 							)
 					)
 				.build();
+		return amazonDynamoDB;
 	}
 }
