@@ -33,6 +33,7 @@ public class DynamoDbConfiguration {
 
 	
 	private AmazonDynamoDB amazonDynamoDB;
+	
 	@Bean
 	public DynamoDBMapper dynamoDBMapper() {
 		return new DynamoDBMapper(buildAmazonDynameDB());

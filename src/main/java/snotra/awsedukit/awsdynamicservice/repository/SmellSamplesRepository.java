@@ -1,5 +1,7 @@
 package snotra.awsedukit.awsdynamicservice.repository;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -19,6 +21,11 @@ public class SmellSamplesRepository {
 	@Autowired
 	DynamoDbConfiguration dynamoDbConfiguration;
 	
+	@PostConstruct
+	public void setupConfirm()
+	{
+		log.info("Database config: {}", dynamoDbConfiguration.toString());
+	}
 	public SmellSample save (SmellSample smellSample)
 	{
 		dynamoDBMapper.save(smellSample);
