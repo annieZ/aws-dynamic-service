@@ -12,9 +12,11 @@ import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 
 @Configuration
 @Data
+@Slf4j
 public class DynamoDbConfiguration {
 	
 	
@@ -40,6 +42,8 @@ public class DynamoDbConfiguration {
 	}
 
 	private AmazonDynamoDB buildAmazonDynameDB() {
+		log.info("AZ: region and accesskey : {}, {}", amazonAWSRegion, amazonAWSAccessKey);
+		
 		amazonDynamoDB = AmazonDynamoDBClientBuilder
 				.standard()
 				.withEndpointConfiguration(
