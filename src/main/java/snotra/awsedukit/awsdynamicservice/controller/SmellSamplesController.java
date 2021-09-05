@@ -44,7 +44,7 @@ public class SmellSamplesController {
 	@PostMapping("/identifySample/{tvoc}/{eCO2}")
 	public SmellSample identifySample(@PathVariable long tvoc, @PathVariable long eCO2)
 	{
-		log.info("AZ, Sample sumitted");
+		log.info("AZ, dentification requested using {}, {}", tvoc, eCO2);
 		return sampleIdentification.identifySample(tvoc, eCO2);
 	}
 

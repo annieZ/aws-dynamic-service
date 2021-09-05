@@ -1,9 +1,18 @@
 package snotra.awsedukit.awsdynamicservice;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-@SpringBootTest
+import snotra.awsedukit.awsdynamicservice.repository.SmellCRUDRepository;
+
+@ExtendWith(SpringExtension.class)
+@SpringBootTest(classes = SmellCRUDRepository.class)
+@AutoConfigureTestDatabase
+@AutoConfigureMockMvc
 class AwsDynamicServiceApplicationTests {
 
 	@Test

@@ -52,20 +52,5 @@ public class SmellSamplesRepository {
 		
 		return sample;
 	}
-	public SmellSample findByTvocAndECo2(long tvoc, long eCO2) {
-		SmellSample queryItem = new SmellSample();
-		queryItem.setECO2(eCO2);
-		queryItem.setTvoc(tvoc);
-		DynamoDBQueryExpression<SmellSample> queryExpression = new DynamoDBQueryExpression<SmellSample>()
-		    .withHashKeyValues(queryItem);
-
-		List<SmellSample> itemList = dynamoDBMapper.query(SmellSample.class, queryExpression);
-		if (!itemList.isEmpty()) {
-			return itemList.get(0);
-		}
-		else {
-			return new SmellSample();
-		}
-			
-	}
+	
 }

@@ -1,6 +1,5 @@
 package snotra.awsedukit.awsdynamicservice.model;
 
-import java.nio.ByteBuffer;
 import java.util.Date;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
