@@ -7,13 +7,14 @@ import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
 import snotra.awsedukit.awsdynamicservice.model.SmellSample;
-import snotra.awsedukit.awsdynamicservice.repository.SmellCRUDRepository;
+import snotra.awsedukit.awsdynamicservice.repository.SmellSamplesRepository;
 
 @Service
 @Slf4j
 public class SampleIdentification {
-	
-	@Autowired SmellCRUDRepository smellCRUDRepository;
+
+	@Autowired
+	private SmellSamplesRepository smellSamplesRepository;
 	
 	public SmellSample identifySample(SmellSample smell)
 	{
@@ -23,7 +24,7 @@ public class SampleIdentification {
 
 	public SmellSample identifySample( long tvoc, long eCO2) {
 		try {
-			List<SmellSample> sampleList =  smellCRUDRepository.findByTvocAndECo2(tvoc, eCO2);
+			List<SmellSample> sampleList =  smellSamplesRepository.findByTvocAndECo2(tvoc, eCO2);
 			if (sampleList != null && !sampleList.isEmpty())
 			{
 				// for prototype return just first one

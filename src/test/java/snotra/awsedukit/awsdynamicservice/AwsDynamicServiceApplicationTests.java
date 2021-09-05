@@ -7,10 +7,8 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import snotra.awsedukit.awsdynamicservice.repository.SmellCRUDRepository;
-
 @ExtendWith(SpringExtension.class)
-@SpringBootTest(classes = SmellCRUDRepository.class)
+@SpringBootTest()
 @AutoConfigureTestDatabase
 @AutoConfigureMockMvc
 class AwsDynamicServiceApplicationTests {
