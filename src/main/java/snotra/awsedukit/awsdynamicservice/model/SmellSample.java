@@ -34,7 +34,10 @@ public class SmellSample {
 	String recognizedSmellType;
 	
 	@DynamoDBAttribute
-	ByteBuffer sampledSmell;
+	long tvoc;
+		
+	@DynamoDBAttribute
+	long eCO2;
 	
 	@DynamoDBAttribute
 	GeoIP location;

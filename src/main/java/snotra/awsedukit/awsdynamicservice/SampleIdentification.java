@@ -14,7 +14,11 @@ public class SampleIdentification {
 	
 	public SmellSample identifySample(SmellSample smell)
 	{
-		// TODO Fancy AI here
+		// TODO Fancy AI here in the future with more parameters into account
 		return  new SmellSample();
+	}
+
+	public SmellSample identifySample( long tvoc, long eCO2) {
+		return smellSamplesRepository.findByTvocAndECo2(tvoc, eCO2);
 	}
 }

@@ -1,11 +1,17 @@
 package snotra.awsedukit.awsdynamicservice.repository;
 
+import java.time.Instant;
+import java.util.Date;
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBQueryExpression;
+import com.amazonaws.services.dynamodbv2.datamodeling.PaginatedQueryList;
 
 import lombok.extern.slf4j.Slf4j;
 import snotra.awsedukit.awsdynamicservice.config.DynamoDbConfiguration;
@@ -31,7 +37,35 @@ public class SmellSamplesRepository {
 		dynamoDBMapper.save(smellSample);
 		return smellSample;
 	}
+	public SmellSample save(String smellType, long tvoc, long eCO2) {
+		SmellSample sample = generateEmptySample();
+		sample.setECO2(eCO2);
+		sample.setTvoc(tvoc);
+		sample.setSumittedSmellType(smellType);
 
+		dynamoDBMapper.save(sample);
+		return sample;
+	}
+	private SmellSample generateEmptySample() {
+		SmellSample sample = new SmellSample();
+		sample.setSubmissionDate(Date.from(Instant.now()));
 		
+		return sample;
+	}
+	public SmellSample findByTvocAndECo2(long tvoc, long eCO2) {
+		SmellSample queryItem = new SmellSample();
+		queryItem.setECO2(eCO2);
+		queryItem.setTvoc(tvoc);
+		DynamoDBQueryExpression<SmellSample> queryExpression = new DynamoDBQueryExpression<SmellSample>()
+		    .withHashKeyValues(queryItem);
 
+		List<SmellSample> itemList = dynamoDBMapper.query(SmellSample.class, queryExpression);
+		if (!itemList.isEmpty()) {
+			return itemList.get(0);
+		}
+		else {
+			return new SmellSample();
+		}
+			
+	}
 }
