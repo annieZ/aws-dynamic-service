@@ -21,7 +21,7 @@ import snotra.awsedukit.awsdynamicservice.model.SmellSample;
 
 @Repository
 @Slf4j
-public class SmellSamplesRepository {
+public class SmellSamplesDAO {
 	
 	@Autowired
 	private DynamoDBMapper dynamoDBMapper;
@@ -76,6 +76,9 @@ public class SmellSamplesRepository {
 			}
 		}
 		catch(Exception ex) {
+
+			log.error("AZ, Query error" );
+			log.error(ex.getMessage());
 			log.error(ex.getLocalizedMessage());
 			return List.of( generateEmptySample());
 		}

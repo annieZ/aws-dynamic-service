@@ -7,14 +7,14 @@ import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
 import snotra.awsedukit.awsdynamicservice.model.SmellSample;
-import snotra.awsedukit.awsdynamicservice.repository.SmellSamplesRepository;
+import snotra.awsedukit.awsdynamicservice.repository.SmellSamplesDAO;
 
 @Service
 @Slf4j
 public class SampleIdentification {
 
 	@Autowired
-	private SmellSamplesRepository smellSamplesRepository;
+	private SmellSamplesDAO smellSamplesRepository;
 	
 	public SmellSample identifySample(SmellSample smell)
 	{

@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RestController;
 import lombok.extern.slf4j.Slf4j;
 import snotra.awsedukit.awsdynamicservice.SampleIdentification;
 import snotra.awsedukit.awsdynamicservice.model.SmellSample;
-import snotra.awsedukit.awsdynamicservice.repository.SmellSamplesRepository;
+import snotra.awsedukit.awsdynamicservice.repository.SmellSamplesDAO;
 
 @RestController
 @Slf4j
 public class SmellSamplesController {
 	
 	@Autowired
-	private SmellSamplesRepository smellSamplesRepository;
+	private SmellSamplesDAO smellSamplesRepository;
 	
 	@Autowired
 	private SampleIdentification sampleIdentification;
