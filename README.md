@@ -1,2 +1,2 @@
-# aws-dynamic-service
+# Backend Service code for AWS Edu-Kit contest application
  
